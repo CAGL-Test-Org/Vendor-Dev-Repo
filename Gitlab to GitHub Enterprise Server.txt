@@ -1,0 +1,37 @@
+Git Lab; glpat-WFbE4ZYJk2ztWgQUs3hY
+
+gl_exporter --namespace demo-group --project demo-repo -o migration_archive.tar.gz
+
+git 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
+
+ghes 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
+
+Migration GUID: f24dc47c-994c-11ec-8642-3de0f9ab28f3
+
+Gitlab to GitHub enterprise server
+export MIGRATION_TOKEN=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
+export MIGRATION_USER=github-partner
+MIGRATION_ARCHIVE
+export MIGRATION_ARCHIVE=/home/admin/amith_migration_archive.tar.gz
+export MIGRATION_ARCHIVE=/tmp/amith_migration_archive.tar.gz
+MIGRATION_ARCHIVE
+export MIGRATION_ARCHIVE=/tmp/amith_migration_archive.tar.gz
+ls
+ghe-migrator prepare $MIGRATION_ARCHIVE
+ls
+export MIGRATION_TOKEN=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
+export MIGRATION_USER=github-partner
+export MIGRATION_ARCHIVE=amith_migration_archive.tar.gz
+ghe-migrator prepare $MIGRATION_ARCHIVE
+export MIGRATION_GUID=f24dc47c-994c-11ec-8642-3de0f9ab28f3
+ghe-migrator conflicts -g $MIGRATION_GUID > conflicts.csv
+ghe-migrator map -i conflicts.csv -g $MIGRATION_GUID
+ghe-migrator audit -g $MIGRATION_GUID | tee audit.csv
+ghe-migrator conflicts -g $MIGRATION_GUID > conflicts.csv
+cat conflicts.csv
+ghe-migrator map -i conflicts.csv -g $MIGRATION_GUID
+ghe-migrator conflicts -g $MIGRATION_GUID > conflicts.csv
+vi conflicts.csv
+ghe-migrator map -i conflicts.csv -g $MIGRATION_GUID
+ghe-migrator import $MIGRATION_ARCHIVE -g $MIGRATION_GUID -u $MIGRATION_USER -p $MIGRATION_TOKEN
+ghe-migrator unlock -g $MIGRATION_GUID | tee unlock.csv
